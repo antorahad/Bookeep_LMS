@@ -5,6 +5,7 @@ import Register from "../components/Register";
 import Home from "../components/Home";
 import AddBook from "../components/AddBook";
 import AddMember from "../components/AddMember";
+import AddSection from "../components/AddSection";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
             {
                 path: '/addmember',
                 element: <AddMember/>
+            },
+            {
+                path: '/addsection',
+                element: <AddSection/>
             }
         ]
     },

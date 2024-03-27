@@ -55,7 +55,7 @@ const HomeCard = () => {
                         <h1 className="text-2xl font-bold text-green-400">Library Section</h1>
                         <p className="text-slate-400 font-medium">Total Sections : </p>
                         <div className="flex items-center gap-3">
-                            <Link to={'/'}>
+                            <Link to={'/addsection'}>
                                 <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Add Section</button>
                             </Link>
                             <Link to={'/'}>
