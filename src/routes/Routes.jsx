@@ -6,6 +6,8 @@ import Home from "../components/Home";
 import AddBook from "../components/AddBook";
 import AddMember from "../components/AddMember";
 import AddSection from "../components/AddSection";
+import IssuedBook from "../components/IssuedBook";
+import ReturnBook from "../components/ReturnBook";
 
 const router = createBrowserRouter([
     {
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
             {
                 path: '/addsection',
                 element: <AddSection/>
+            },
+            {
+                path: '/issuebook',
+                element: <IssuedBook/>
+            },
+            {
+                path: '/returnbook',
+                element: <ReturnBook/>
             }
         ]
     },

@@ -72,7 +72,7 @@ const HomeCard = () => {
                         <h1 className="text-2xl font-bold text-green-400">Book Issued</h1>
                         <p className="text-slate-400 font-medium">Total Book Issued : </p>
                         <div className="flex items-center gap-3">
-                            <Link to={'/'}>
+                            <Link to={'/issuebook'}>
                                 <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Issue Book</button>
                             </Link>
                             <Link to={'/'}>
@@ -89,7 +89,7 @@ const HomeCard = () => {
                         <h1 className="text-2xl font-bold text-green-400">Book Returned</h1>
                         <p className="text-slate-400 font-medium">Total Book Returned : </p>
                         <div className="flex items-center gap-3">
-                            <Link to={'/'}>
+                            <Link to={'/returnbook'}>
                                 <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Return Book</button>
                             </Link>
                             <Link to={'/'}>
