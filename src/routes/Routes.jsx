@@ -8,6 +8,7 @@ import AddMember from "../components/AddMember";
 import AddSection from "../components/AddSection";
 import IssuedBook from "../components/IssuedBook";
 import ReturnBook from "../components/ReturnBook";
+import PrivateProvider from "../private/PrivateProvider";
 
 const router = createBrowserRouter([
     {
@@ -24,27 +25,27 @@ const router = createBrowserRouter([
             },
             {
                 path: '/home',
-                element: <Home/>
+                element: <PrivateProvider><Home/></PrivateProvider>
             },
             {
                 path: '/addbook',
-                element: <AddBook/>
+                element: <PrivateProvider><AddBook/></PrivateProvider>
             },
             {
                 path: '/addmember',
-                element: <AddMember/>
+                element: <PrivateProvider><AddMember/></PrivateProvider>
             },
             {
                 path: '/addsection',
-                element: <AddSection/>
+                element: <PrivateProvider><AddSection/></PrivateProvider>
             },
             {
                 path: '/issuebook',
-                element: <IssuedBook/>
+                element: <PrivateProvider><IssuedBook/></PrivateProvider>
             },
             {
                 path: '/returnbook',
-                element: <ReturnBook/>
+                element: <PrivateProvider><ReturnBook/></PrivateProvider>
             }
         ]
     },
