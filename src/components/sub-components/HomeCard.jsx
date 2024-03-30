@@ -5,16 +5,30 @@ import sectionIcon from '../../assets/section.png';
 import issuedIcon from '../../assets/issued.png';
 import returnIcon from '../../assets/return.png';
 import profileIcon from '../../assets/profile.png';
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../authprovider/AuthProvider";
 import Marquee from "react-fast-marquee"
 const HomeCard = () => {
     const { user } = useContext(AuthContext);
+    const [userInfo, setUserInfo] = useState([]);
+    const url = `http://localhost:5000/users?email=${user?.email}`;
+    useEffect(() => {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setUserInfo(data))
+    }, [url])
     return (
         <div className="px-5 py-10 max-w-7xl mx-auto">
             <div className="mb-10">
                 <Marquee pauseOnClick={true} pauseOnHover={true} speed={30} direction="right" className="bg-white bg-opacity-10 p-5">
-                    <p className="text-2xl text-white font-bold me-2">Hello! <span className="text-green-400">{user.email}</span>.</p>
+                    {
+                        userInfo.map(item => <p key={item._id} className="text-2xl text-white font-bold me-2">Hello! <span className="text-green-400">{
+                            item.name ?
+                            item.name 
+                            :
+                            user.email
+                        }</span>.</p>)
+                    }
                     <p className="text-2xl text-white font-bold me-2">Welcome to Bookeep Library Management System.</p>
                     <p className="text-2xl text-white font-bold me-2">Simplify library organization with Bookeep.</p>
                 </Marquee>
@@ -113,7 +127,9 @@ const HomeCard = () => {
                         </div>
                         <h1 className="text-2xl font-bold text-green-400">Profile</h1>
                         <p className="text-slate-400 font-medium">Manage Your Profile</p>
-                        <Link to={'/'} className="hover:text-green-500 transition delay-100 duration-300 ease-in-out">View Profile</Link>
+                        <Link to={'/viewprofile'}>
+                            <button className="btn bg-green-400 hover:bg-green-500 focus:bg-green-500 text-white border-none outline-none rounded-md">View Profile</button>
+                        </Link>
                     </div>
                 </div>
             </div>

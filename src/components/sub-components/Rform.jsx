@@ -13,6 +13,9 @@ const Rform = () => {
         const email = form.email.value;
         const password = form.password.value;
         const name = form.name.value;
+        const newUser = {
+            name, email
+        }
         console.log(email, password, name);
         register(email, password)
         .then(result => {
@@ -23,6 +26,15 @@ const Rform = () => {
                 icon: "success"
             });
             navigate(location?.state ? location.state : '/');
+            fetch('http://localhost:5000/users', {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => console.log(data))
         }).catch(error => {
             Swal.fire({
                 title: "Error",

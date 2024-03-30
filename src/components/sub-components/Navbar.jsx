@@ -14,7 +14,9 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 <div className="w-14 me-3 tooltip tooltip-bottom cursor-pointer" data-tip={user.email}>
-                    <img src={profileIcon} alt="icon"/>
+                    <Link to={'/viewprofile'}>
+                        <img src={profileIcon} alt="icon"/>
+                    </Link>
                 </div>
                 <button onClick={logout} className="btn bg-red-400 hover:bg-red-500 focus:bg-red-500 text-white border-none outline-none rounded-md">Log Out</button>
             </div>

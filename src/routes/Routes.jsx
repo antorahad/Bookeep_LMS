@@ -8,6 +8,8 @@ import AddMember from "../components/AddMember";
 import AddSection from "../components/AddSection";
 import IssuedBook from "../components/IssuedBook";
 import ReturnBook from "../components/ReturnBook";
+import ViewProfile from "../components/ViewProfile";
+import UpdateProfile from "../components/UpdateProfile";
 import PrivateProvider from "../private/PrivateProvider";
 
 const router = createBrowserRouter([
@@ -46,6 +48,15 @@ const router = createBrowserRouter([
             {
                 path: '/returnbook',
                 element: <PrivateProvider><ReturnBook/></PrivateProvider>
+            },
+            {
+                path: '/viewprofile',
+                element: <PrivateProvider><ViewProfile/></PrivateProvider>
+            },
+            {
+                path: '/updateprofile/:id',
+                element: <PrivateProvider><UpdateProfile/></PrivateProvider>
+
             }
         ]
     },
