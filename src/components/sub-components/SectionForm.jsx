@@ -1,10 +1,46 @@
+import Swal from "sweetalert2";
+
 const SectionForm = () => {
+    const handleAddSection = e => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const category = form.category.value;
+        const totalBook = form.totalBook.value;
+        const totalShelf = form.totalShelf.value;
+
+        const newSection = {
+            name, category, totalBook, totalShelf
+        }
+
+        console.log(newSection);
+        fetch('http://localhost:5000/sections', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newSection)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Congratulation",
+                        text: "Section added to database successfully",
+                        icon: "success"
+                    });
+                    form.reset()
+                }
+            })
+
+    }
     return (
         <div className="min-h-screen flex flex-col items-center justify-center py-10 px-5">
             <div className="flex items-center justify-center">
                 <h1 className="text-white text-5xl font-bold mb-10">Add A New Section</h1>
             </div>
-            <form className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-white bg-opacity-10 p-5 rounded-md">
+            <form onSubmit={handleAddSection} className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-white bg-opacity-10 p-5 rounded-md">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="form-control">
                         <label className="label">

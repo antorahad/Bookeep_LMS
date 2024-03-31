@@ -1,10 +1,51 @@
+import Swal from "sweetalert2";
+
 const BookForm = () => {
+    const handleAddBook = e => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const category = form.category.value;
+        const author = form.author.value;
+        const edition = form.edition.value;
+        const price = form.price.value;
+        const image = form.image.value;
+        const section = form.section.value;
+        const shelf = form.shelf.value;
+        const description = form.description.value;
+
+        const newBook = {
+            name, category, author, edition, price, image, section, shelf, description
+        }
+
+        console.log(newBook);
+        fetch('http://localhost:5000/books', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newBook)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Congratulation",
+                        text: "Book added to database successfully",
+                        icon: "success"
+                    });
+                    form.reset()
+                }
+            })
+
+    }
     return (
         <div className="py-10 px-5">
             <div className="flex items-center justify-center">
                 <h1 className="text-white text-5xl font-bold mb-10">Add A New Book</h1>
             </div>
-            <form className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-white bg-opacity-10 p-5 rounded-md">
+            <form onSubmit={handleAddBook} className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-white bg-opacity-10 p-5 rounded-md">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="form-control">
                         <label className="label">

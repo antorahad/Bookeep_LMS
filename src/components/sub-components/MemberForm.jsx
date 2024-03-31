@@ -1,10 +1,51 @@
+import Swal from "sweetalert2";
+
 const MemberForm = () => {
+    const handleAddMember = e => {
+        e.preventDefault();
+        const form = e.target;
+        const identity = form.identity.value;
+        const name = form.name.value;
+        const contact = form.contact.value;
+        const join = form.join.value;
+        const membership = form.membership.value;
+        const image = form.image.value;
+        const account = form.account.value;
+        const fee = form.fee.value;
+        const address = form.address.value;
+
+        const newMember = {
+            identity, name, contact, join, membership, image, account, fee, address
+        }
+
+        console.log(newMember);
+        fetch('http://localhost:5000/members', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newMember)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: "Congratulation",
+                        text: "Member added to database successfully",
+                        icon: "success"
+                    });
+                    form.reset()
+                }
+            })
+
+    }
     return (
         <div className="py-10 px-5">
             <div className="flex items-center justify-center">
                 <h1 className="text-white text-5xl font-bold mb-10">Add A New Member</h1>
             </div>
-            <form className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-white bg-opacity-10 p-5 rounded-md">
+            <form onSubmit={handleAddMember} className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-white bg-opacity-10 p-5 rounded-md">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="form-control">
                         <label className="label">

@@ -5,34 +5,9 @@ import sectionIcon from '../../assets/section.png';
 import issuedIcon from '../../assets/issued.png';
 import returnIcon from '../../assets/return.png';
 import profileIcon from '../../assets/profile.png';
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../authprovider/AuthProvider";
-import Marquee from "react-fast-marquee"
 const HomeCard = () => {
-    const { user } = useContext(AuthContext);
-    const [userInfo, setUserInfo] = useState([]);
-    const url = `http://localhost:5000/users?email=${user?.email}`;
-    useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setUserInfo(data))
-    }, [url])
     return (
         <div className="px-5 py-10 max-w-7xl mx-auto">
-            <div className="mb-10">
-                <Marquee pauseOnClick={true} pauseOnHover={true} speed={30} direction="right" className="bg-white bg-opacity-10 p-5">
-                    {
-                        userInfo.map(item => <p key={item._id} className="text-2xl text-white font-bold me-2">Hello! <span className="text-green-400">{
-                            item.name ?
-                            item.name 
-                            :
-                            user.email
-                        }</span>.</p>)
-                    }
-                    <p className="text-2xl text-white font-bold me-2">Welcome to Bookeep Library Management System.</p>
-                    <p className="text-2xl text-white font-bold me-2">Simplify library organization with Bookeep.</p>
-                </Marquee>
-            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 <div className="card w-full bg-base-100 hover:bg-opacity-10 rounded-md shadow-sm hover:scale-105 transition-transform duration-300 ease-in-out">
                     <div className="card-body">
