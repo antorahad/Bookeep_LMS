@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../authprovider/AuthProvider";
 
 const BookForm = () => {
+    const {user} = useContext(AuthContext);
     const handleAddBook = e => {
         e.preventDefault();
         const form = e.target;
@@ -13,9 +16,10 @@ const BookForm = () => {
         const section = form.section.value;
         const shelf = form.shelf.value;
         const description = form.description.value;
+        const email = user.email;
 
         const newBook = {
-            name, category, author, edition, price, image, section, shelf, description
+            name, category, author, edition, price, image, section, shelf, description, email
         }
 
         console.log(newBook);

@@ -5,7 +5,50 @@ import sectionIcon from '../../assets/section.png';
 import issuedIcon from '../../assets/issued.png';
 import returnIcon from '../../assets/return.png';
 import profileIcon from '../../assets/profile.png';
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../authprovider/AuthProvider";
 const HomeCard = () => {
+    const {user} = useContext(AuthContext);
+    const [books, setBooks] = useState([]);
+    const url = `http://localhost:5000/books?email=${user?.email}`;
+    useEffect(() => {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setBooks(data))
+    }, [url])
+
+    const [members, setMembers] = useState([]);
+    const url2 = `http://localhost:5000/members?email=${user?.email}`;
+    useEffect(() => {
+        fetch(url2)
+            .then(res => res.json())
+            .then(data => setMembers(data))
+    }, [url2])
+
+    const [sections, setSections] = useState([]);
+    const url3 = `http://localhost:5000/sections?email=${user?.email}`;
+    useEffect(() => {
+        fetch(url3)
+            .then(res => res.json())
+            .then(data => setSections(data))
+    }, [url3])
+    
+    const [issuedBooks, setIssuedBooks] = useState([]);
+    const url4 = `http://localhost:5000/issues?email=${user?.email}`;
+    useEffect(() => {
+        fetch(url4)
+            .then(res => res.json())
+            .then(data => setIssuedBooks(data))
+    }, [url4])
+
+    const [returnedBooks, setReturnedBooks] = useState([]);
+    const url5 = `http://localhost:5000/returns?email=${user?.email}`;
+    useEffect(() => {
+        fetch(url5)
+            .then(res => res.json())
+            .then(data => setReturnedBooks(data))
+    }, [url5])
+
     return (
         <div className="px-5 py-10 max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -15,7 +58,7 @@ const HomeCard = () => {
                             <img src={bookIcon} alt="icon" />
                         </div>
                         <h1 className="text-2xl font-bold text-green-400">Book Collection</h1>
-                        <p className="text-slate-400 font-medium">Total Books : </p>
+                        <p className="text-slate-400 font-medium">Total Books : {books.length}</p>
                         <div className="flex items-center gap-3">
                             <Link to={'/addbook'}>
                                 <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Add Book</button>
@@ -33,7 +76,7 @@ const HomeCard = () => {
                             <img src={memberIcon} alt="icon" />
                         </div>
                         <h1 className="text-2xl font-bold text-green-400">Library Member</h1>
-                        <p className="text-slate-400 font-medium">Total Members : </p>
+                        <p className="text-slate-400 font-medium">Total Members : {members.length}</p>
                         <div className="flex items-center gap-3">
                             <Link to={'/addmember'}>
                                 <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Add Member</button>
@@ -50,7 +93,7 @@ const HomeCard = () => {
                             <img src={sectionIcon} alt="icon" />
                         </div>
                         <h1 className="text-2xl font-bold text-green-400">Library Section</h1>
-                        <p className="text-slate-400 font-medium">Total Sections : </p>
+                        <p className="text-slate-400 font-medium">Total Sections : {sections.length}</p>
                         <div className="flex items-center gap-3">
                             <Link to={'/addsection'}>
                                 <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Add Section</button>
@@ -67,7 +110,7 @@ const HomeCard = () => {
                             <img src={issuedIcon} alt="icon" />
                         </div>
                         <h1 className="text-2xl font-bold text-green-400">Book Issued</h1>
-                        <p className="text-slate-400 font-medium">Total Book Issued : </p>
+                        <p className="text-slate-400 font-medium">Total Book Issued : {issuedBooks.length}</p>
                         <div className="flex items-center gap-3">
                             <Link to={'/issuebook'}>
                                 <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Issue Book</button>
@@ -84,7 +127,7 @@ const HomeCard = () => {
                             <img src={returnIcon} alt="icon" />
                         </div>
                         <h1 className="text-2xl font-bold text-green-400">Book Returned</h1>
-                        <p className="text-slate-400 font-medium">Total Book Returned : </p>
+                        <p className="text-slate-400 font-medium">Total Book Returned : {returnedBooks.length}</p>
                         <div className="flex items-center gap-3">
                             <Link to={'/returnbook'}>
                                 <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Return Book</button>

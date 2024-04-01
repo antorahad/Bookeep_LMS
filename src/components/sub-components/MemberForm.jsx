@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../authprovider/AuthProvider";
 
 const MemberForm = () => {
+    const {user} = useContext(AuthContext);
     const handleAddMember = e => {
         e.preventDefault();
         const form = e.target;
@@ -13,9 +16,10 @@ const MemberForm = () => {
         const account = form.account.value;
         const fee = form.fee.value;
         const address = form.address.value;
+        const email = user.email;
 
         const newMember = {
-            identity, name, contact, join, membership, image, account, fee, address
+            identity, name, contact, join, membership, image, account, fee, address,email
         }
 
         console.log(newMember);

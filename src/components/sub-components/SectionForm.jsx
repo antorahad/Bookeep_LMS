@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../authprovider/AuthProvider";
 
 const SectionForm = () => {
+    const {user} = useContext(AuthContext);
     const handleAddSection = e => {
         e.preventDefault();
         const form = e.target;
@@ -8,9 +11,9 @@ const SectionForm = () => {
         const category = form.category.value;
         const totalBook = form.totalBook.value;
         const totalShelf = form.totalShelf.value;
-
+        const email = user.email;
         const newSection = {
-            name, category, totalBook, totalShelf
+            name, category, totalBook, totalShelf, email
         }
 
         console.log(newSection);
