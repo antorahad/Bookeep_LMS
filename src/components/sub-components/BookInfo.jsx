@@ -16,18 +16,15 @@ const BookInfo = () => {
                     <p>Name: {name}</p>
                     <p>Category: {category}</p>
                     <p>Auhtor: {author}</p>
-                    <p>Price: {price}TK</p>
+                    <p>Price: {price} TK</p>
                     <p>Edition: {edition} Edition</p>
                     <p>Library Section: {section}</p>
                     <p>Shelf No: {shelf}</p>
                     <p>Book Plot: {description}</p>
                 </div>
-                <div className="flex items-center gap-3">
-                    <Link to={'/'}>
-                    <button className="btn btn-sm bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white text-xs border-none outline-none rounded-md">Edit Book</button>
-                    </Link>
-                    <Link to={'/'}>
-                    <button className="btn btn-sm bg-red-400 hover:bg-red-500 focus:bg-red-500 text-white text-xs border-none outline-none rounded-md">Delete Book</button>
+                <div>
+                    <Link to={'/viewbook'}>
+                        <button className="btn btn-sm bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white text-xs border-none outline-none rounded-md mt-5">Go Back</button>
                     </Link>
                 </div>
             </div>

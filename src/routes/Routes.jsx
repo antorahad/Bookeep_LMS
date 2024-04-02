@@ -13,6 +13,7 @@ import UpdateProfile from "../components/UpdateProfile";
 import PrivateProvider from "../private/PrivateProvider";
 import ViewBook from "../components/ViewBook";
 import BookDetail from "../components/BookDetail";
+import UpdateBook from "../components/UpdateBook";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
             {
                 path: '/bookdetail/:id',
                 element: <PrivateProvider><BookDetail/></PrivateProvider>,
+                loader: ({params}) => fetch(`http://localhost:5000/books/${params.id}`)
+            },
+            {
+                path: '/updatebook/:id',
+                element: <PrivateProvider><UpdateBook/></PrivateProvider>,
                 loader: ({params}) => fetch(`http://localhost:5000/books/${params.id}`)
             },
             {
