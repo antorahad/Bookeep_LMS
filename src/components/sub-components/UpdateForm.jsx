@@ -1,6 +1,9 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateForm = ({ item }) => {
+    const location = useLocation();
+    const navigate = useNavigate();
     const {_id, name, email, contact, image, address, gender } = item;
     const handleUpdateProfile = e => {
         e.preventDefault();
@@ -32,6 +35,7 @@ const UpdateForm = ({ item }) => {
                         icon: "success"
                     });
                     form.reset()
+                    navigate(location?.state ? location.state : '/viewprofile');
                 }
             })
     }

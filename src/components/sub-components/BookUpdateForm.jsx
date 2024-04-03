@@ -1,7 +1,9 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const BookUpdateForm = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
     const bookInfo = useLoaderData();
     const {
       _id,  name, image, author, category, price, edition, section, shelf, description
@@ -41,6 +43,7 @@ const BookUpdateForm = () => {
                         icon: "success"
                     });
                     form.reset()
+                    navigate(location?.state ? location.state : '/viewbook');
                 }
             })
     }

@@ -11,8 +11,8 @@ const BookInfo = () => {
                 <h1 className="text-white text-5xl font-bold mb-10">Book Details</h1>
             </div>
             <div className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-white bg-opacity-10 p-5 rounded-md">
-                <img src={image} alt="Profile Image" className="w-[200px] h-[200px] object-cover rounded-md"/>
-                <div className="flex flex-col gap-3 my-5 text-white text-lg font-medium">
+                <img src={image} alt="Book Cover" className="w-[200px] h-[200px] object-cover rounded-md"/>
+                <div className="flex flex-col gap-3 my-5 text-white font-medium">
                     <p>Name: {name}</p>
                     <p>Category: {category}</p>
                     <p>Auhtor: {author}</p>

@@ -14,6 +14,9 @@ import PrivateProvider from "../private/PrivateProvider";
 import ViewBook from "../components/ViewBook";
 import BookDetail from "../components/BookDetail";
 import UpdateBook from "../components/UpdateBook";
+import ViewMember from "../components/ViewMember";
+import MemberDetail from "../components/MemberDetail";
+import UpdateMember from "../components/UpdateMember";
 
 const router = createBrowserRouter([
     {
@@ -50,9 +53,24 @@ const router = createBrowserRouter([
                 element: <PrivateProvider><UpdateBook/></PrivateProvider>,
                 loader: ({params}) => fetch(`http://localhost:5000/books/${params.id}`)
             },
+            
             {
                 path: '/addmember',
                 element: <PrivateProvider><AddMember/></PrivateProvider>
+            },
+            {
+                path: '/viewmember',
+                element: <PrivateProvider><ViewMember/></PrivateProvider>
+            },
+            {
+                path: '/memberdetail/:id',
+                element: <PrivateProvider><MemberDetail/></PrivateProvider>,
+                loader: ({params}) => fetch(`http://localhost:5000/members/${params.id}`)
+            },
+            {
+                path: '/updatemember/:id',
+                element: <PrivateProvider><UpdateMember/></PrivateProvider>,
+                loader: ({params}) => fetch(`http://localhost:5000/members/${params.id}`)
             },
             {
                 path: '/addsection',

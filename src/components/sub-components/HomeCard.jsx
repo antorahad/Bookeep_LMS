@@ -81,7 +81,7 @@ const HomeCard = () => {
                             <Link to={'/addmember'}>
                                 <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Add Member</button>
                             </Link>
-                            <Link to={'/'}>
+                            <Link to={'/viewmember'}>
                                 <button className="btn bg-green-400 hover:bg-green-500 focus:bg-green-500 text-white border-none outline-none rounded-md">View Member</button>
                             </Link>
                         </div>

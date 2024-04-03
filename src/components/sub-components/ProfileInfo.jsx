@@ -12,7 +12,7 @@ const ProfileInfo = ({ item }) => {
                     <img src={profileImage} alt="Profile Image"/>
                 }
             </div>
-            <div className="flex flex-col gap-5 text-white text-lg font-medium">
+            <div className="flex flex-col gap-5 text-white font-medium">
                 <p>Name: {name}</p>
                 <p>Gender: {gender}</p>
                 <p>Email: {email}</p>
