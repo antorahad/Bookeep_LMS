@@ -20,6 +20,7 @@ import UpdateMember from "../components/UpdateMember";
 import ViewSection from "../components/ViewSection";
 import UpdateSection from "../components/UpdateSection";
 import ViewIssuedBook from "../components/ViewIssuedBook";
+import UpdateIssuedBook from "../components/UpdateIssuedBook";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -94,6 +95,11 @@ const router = createBrowserRouter([
             {
                 path: '/viewissuedbook',
                 element: <PrivateProvider><ViewIssuedBook/></PrivateProvider>
+            },
+            {
+                path: '/updateissuedbook/:id',
+                element: <PrivateProvider><UpdateIssuedBook/></PrivateProvider>,
+                loader: ({params}) => fetch(`http://localhost:5000/issues/${params.id}`)
             },
             {
                 path: '/returnbook',

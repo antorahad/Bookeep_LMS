@@ -39,7 +39,7 @@ const BookUpdateForm = () => {
                 if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Updated!",
-                        text: "Book Updated Successfully",
+                        text: "Book updated successfully",
                         icon: "success"
                     });
                     form.reset()
