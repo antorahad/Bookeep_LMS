@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const MemberCollection = () => {
     const { user } = useContext(AuthContext);
     const [memberCollection, setMemberCollection] = useState([]);
-    const url = `http://localhost:5000/members?email=${user?.email}`;
+    const url = `https://lms-server-beta.vercel.app/members?email=${user?.email}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -37,7 +37,7 @@ const MemberCollection = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/members/${_id}`, {
+                fetch(`https://lms-server-beta.vercel.app/members/${_id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())

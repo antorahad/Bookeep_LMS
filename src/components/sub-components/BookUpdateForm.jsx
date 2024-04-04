@@ -26,7 +26,7 @@ const BookUpdateForm = () => {
             name, category, author, edition, price, image, section, shelf, description
         }
 
-        fetch(`http://localhost:5000/books/${_id}`, {
+        fetch(`https://lms-server-beta.vercel.app/books/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

@@ -26,7 +26,7 @@ const MemberForm = () => {
         }
 
         console.log(newMember);
-        fetch('http://localhost:5000/members', {
+        fetch('https://lms-server-beta.vercel.app/members', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

@@ -5,7 +5,7 @@ import ProfileInfo from "./ProfileInfo";
 const ProfileCard = () => {   
     const {user} = useContext(AuthContext);
     const [userInfo, setUserInfo] = useState([]);
-    const url = `http://localhost:5000/users?email=${user?.email}`;
+    const url = `https://lms-server-beta.vercel.app/users?email=${user?.email}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())

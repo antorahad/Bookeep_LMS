@@ -24,7 +24,7 @@ const MemberUpdateForm = () => {
             identity, name, contact, join, membership, image, account, fee, address
         }
 
-        fetch(`http://localhost:5000/members/${_id}`, {
+        fetch(`https://lms-server-beta.vercel.app/members/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

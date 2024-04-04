@@ -20,7 +20,7 @@ const SectionForm = () => {
         }
 
         console.log(newSection);
-        fetch('http://localhost:5000/sections', {
+        fetch('https://lms-server-beta.vercel.app/sections', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

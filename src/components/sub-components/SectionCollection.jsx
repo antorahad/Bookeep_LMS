@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const SectionCollection = () => {
     const { user } = useContext(AuthContext);
     const [sectionCollection, setSectionCollection] = useState([]);
-    const url = `http://localhost:5000/sections?email=${user?.email}`;
+    const url = `https://lms-server-beta.vercel.app/sections?email=${user?.email}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -35,7 +35,7 @@ const SectionCollection = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/sections/${_id}`, {
+                fetch(`https://lms-server-beta.vercel.app/sections/${_id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())

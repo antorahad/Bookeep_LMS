@@ -21,10 +21,14 @@ import ViewSection from "../components/ViewSection";
 import UpdateSection from "../components/UpdateSection";
 import ViewIssuedBook from "../components/ViewIssuedBook";
 import UpdateIssuedBook from "../components/UpdateIssuedBook";
+import ViewReturnedBook from "../components/ViewReturnedBook";
+import UpdateReturnedBook from "../components/UpdateReturnedBook";
+import Error from "../error/Error";
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Layout/>,
+        errorElement: <Error/>,
         children: [
             {
                 path: '/',
@@ -49,12 +53,12 @@ const router = createBrowserRouter([
             {
                 path: '/bookdetail/:id',
                 element: <PrivateProvider><BookDetail/></PrivateProvider>,
-                loader: ({params}) => fetch(`http://localhost:5000/books/${params.id}`)
+                loader: ({params}) => fetch(`https://lms-server-beta.vercel.app/books/${params.id}`)
             },
             {
                 path: '/updatebook/:id',
                 element: <PrivateProvider><UpdateBook/></PrivateProvider>,
-                loader: ({params}) => fetch(`http://localhost:5000/books/${params.id}`)
+                loader: ({params}) => fetch(`https://lms-server-beta.vercel.app/books/${params.id}`)
             },
             
             {
@@ -68,12 +72,12 @@ const router = createBrowserRouter([
             {
                 path: '/memberdetail/:id',
                 element: <PrivateProvider><MemberDetail/></PrivateProvider>,
-                loader: ({params}) => fetch(`http://localhost:5000/members/${params.id}`)
+                loader: ({params}) => fetch(`https://lms-server-beta.vercel.app/members/${params.id}`)
             },
             {
                 path: '/updatemember/:id',
                 element: <PrivateProvider><UpdateMember/></PrivateProvider>,
-                loader: ({params}) => fetch(`http://localhost:5000/members/${params.id}`)
+                loader: ({params}) => fetch(`https://lms-server-beta.vercel.app/members/${params.id}`)
             },
             {
                 path: '/addsection',
@@ -85,7 +89,7 @@ const router = createBrowserRouter([
             },{
                 path: '/updatesection/:id',
                 element: <PrivateProvider><UpdateSection/></PrivateProvider>,
-                loader: ({params}) => fetch(`http://localhost:5000/sections/${params.id}`)
+                loader: ({params}) => fetch(`https://lms-server-beta.vercel.app/sections/${params.id}`)
             },
 
             {
@@ -99,11 +103,20 @@ const router = createBrowserRouter([
             {
                 path: '/updateissuedbook/:id',
                 element: <PrivateProvider><UpdateIssuedBook/></PrivateProvider>,
-                loader: ({params}) => fetch(`http://localhost:5000/issues/${params.id}`)
+                loader: ({params}) => fetch(`https://lms-server-beta.vercel.app/issues/${params.id}`)
             },
             {
                 path: '/returnbook',
                 element: <PrivateProvider><ReturnBook/></PrivateProvider>
+            },
+            {
+                path: '/viewreturnedbook',
+                element: <PrivateProvider><ViewReturnedBook/></PrivateProvider>
+            },
+            {
+                path: '/updatereturnedbook/:id',
+                element: <PrivateProvider><UpdateReturnedBook/></PrivateProvider>,
+                loader: ({params}) => fetch(`https://lms-server-beta.vercel.app/returns/${params.id}`)
             },
             {
                 path: '/viewprofile',

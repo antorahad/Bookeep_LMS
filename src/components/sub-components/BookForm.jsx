@@ -26,7 +26,7 @@ const BookForm = () => {
         }
 
         console.log(newBook);
-        fetch('http://localhost:5000/books', {
+        fetch('https://lms-server-beta.vercel.app/books', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

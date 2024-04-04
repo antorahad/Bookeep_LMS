@@ -1,17 +1,39 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../authprovider/AuthProvider";
-import { useLocation, useNavigate } from "react-router-dom";
 
-const ReturnForm = () => {
+const ReturnBookUpdateForm = () => {
+    const returnBookInfo = useLoaderData();
+    const {_id, memberName, bookName, category, author, issueDate, expireDate: initialExpireDate, returnDate: initialReturnDate, lateFee: initialLateFee} = returnBookInfo;
     const location = useLocation();
     const navigate = useNavigate();
-    const {user} = useContext(AuthContext);
-    const [returnDate, setReturnDate] = useState('');
-    const [expireDate, setExpireDate] = useState('');
-    const [lateFee, setLateFee] = useState(0);
 
-    const handleReturnBook = e => {
+    const [expireDate, setExpireDate] = useState(initialExpireDate);
+    const [returnDate, setReturnDate] = useState(initialReturnDate);
+    const [lateFee, setLateFee] = useState(initialLateFee);
+
+    const handleExpireDateChange = e => {
+        const newExpireDate = e.target.value;
+        setExpireDate(newExpireDate);
+        updateLateFee(newExpireDate, returnDate);
+    };
+
+    const handleReturnDateChange = e => {
+        const newReturnDate = e.target.value;
+        setReturnDate(newReturnDate);
+        updateLateFee(expireDate, newReturnDate);
+    };
+
+    const updateLateFee = (expireDate, returnDate) => {
+        const lateFeePerDay = 50;
+        const expireDateTime = new Date(expireDate).getTime();
+        const returnDateTime = new Date(returnDate).getTime();
+        const daysLate = Math.max(0, (returnDateTime - expireDateTime) / (1000 * 3600 * 24));
+        const newLateFee = daysLate * lateFeePerDay;
+        setLateFee(newLateFee);
+    };
+
+    const handleUpdateReturnedBook = e => {
         e.preventDefault();
         const form = e.target;
         const memberName = form.memberName.value;
@@ -19,99 +41,68 @@ const ReturnForm = () => {
         const category = form.category.value;
         const author = form.author.value;
         const issueDate = form.issueDate.value;
-        const email = user.email;
-        const newReturn = {
-            memberName,bookName,category,author,issueDate,expireDate,returnDate,lateFee,email
-        }
 
-        console.log(newReturn);
+        const updateReturn = {
+            memberName, bookName, category, author, issueDate, expireDate, returnDate, lateFee
+        };
 
-        fetch('https://lms-server-beta.vercel.app/returns', {
-            method: "POST",
+        fetch(`https://lms-server-beta.vercel.app/returns/${_id}`, {
+            method: "PUT",
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newReturn)
+            body: JSON.stringify(updateReturn)
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                if (data.insertedId) {
+                if (data.modifiedCount > 0) {
                     Swal.fire({
-                        title: "Congratulation",
-                        text: "Book has been returned successfully",
+                        title: "Updated!",
+                        text: "Returned book updated successfully",
                         icon: "success"
                     });
                     form.reset();
                     navigate(location?.state ? location.state : '/viewreturnedbook');
-                    setReturnDate(''); // Reset returnDate state
-                    setExpireDate(''); // Reset expireDate state
-                    setLateFee(0); // Reset lateFee state
                 }
-            })
-    }
-    
-    const handleReturnDateChange = (event) => {
-        setReturnDate(event.target.value);
-        calculateLateFee(event.target.value, expireDate);
+            });
     };
 
-    const handleExpireDateChange = (event) => {
-        setExpireDate(event.target.value);
-        calculateLateFee(returnDate, event.target.value);
-    };
-
-    const calculateLateFee = (returnDate, expireDate) => {
-        if (returnDate && expireDate) {
-            const returnDateObj = new Date(returnDate);
-            const expireDateObj = new Date(expireDate);
-
-            if (returnDateObj > expireDateObj) {
-                const diffTime = Math.abs(returnDateObj - expireDateObj);
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                const lateFeeAmount = diffDays * 50;
-                setLateFee(lateFeeAmount);
-            } else {
-                setLateFee(0);
-            }
-        }
-    }
     return (
         <div className="min-h-screen py-10 px-5">
             <div className="flex items-center justify-center">
-                <h1 className="text-white text-5xl font-bold mb-10">Return A Book</h1>
+                <h1 className="text-white text-5xl font-bold mb-10">Update A Returned Book</h1>
             </div>
-            <form onSubmit={handleReturnBook} className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-white bg-opacity-10 p-5 rounded-md">
+            <form onSubmit={handleUpdateReturnedBook} className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-white bg-opacity-10 p-5 rounded-md">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <div className="form-control">
                         <label className="label">
                             <span className="font-medium text-green-400">Member Name</span>
                         </label>
-                        <input type="text" placeholder="Enter Member Name" name="memberName" className="input rounded-md" />
+                        <input type="text" placeholder="Enter Member Name" name="memberName" defaultValue={memberName} className="input rounded-md" />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="font-medium text-green-400">Book Name</span>
                         </label>
-                        <input type="text" placeholder="Enter Book Name" name="bookName" className="input rounded-md" />
+                        <input type="text" placeholder="Enter Book Name" name="bookName" defaultValue={bookName} className="input rounded-md" />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="font-medium text-green-400">Book Category</span>
                         </label>
-                        <input type="text" placeholder="Enter Book Category" name="category" className="input rounded-md" />
+                        <input type="text" placeholder="Enter Book Category" name="category" defaultValue={category} className="input rounded-md" />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="font-medium text-green-400">Author Name</span>
                         </label>
-                        <input type="text" placeholder="Enter Author Name" name="author" className="input rounded-md" />
+                        <input type="text" placeholder="Enter Author Name" name="author" defaultValue={author} className="input rounded-md" />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="font-medium text-green-400">Issue Date</span>
                         </label>
-                        <input type="date" name="issueDate" className="input rounded-md" />
+                        <input type="date" name="issueDate" defaultValue={issueDate} className="input rounded-md" />
                     </div>
                     <div className="form-control">
                         <label className="label">
@@ -129,15 +120,15 @@ const ReturnForm = () => {
                         <label className="label">
                             <span className="font-medium text-green-400">Late Fee</span>
                         </label>
-                        <input type="number" name="lateFee" value={lateFee} readOnly className="input rounded-md" />
+                        <input type="text" placeholder="Late Fee" name="lateFee" value={lateFee} readOnly className="input rounded-md" />
                     </div>
                 </div>
                 <div className="flex items-center justify-center mt-5">
-                    <input type="submit" value="Return A Book" className="btn bg-green-400 hover:bg-green-500 focus:bg-green-500 text-white border-none outline-none rounded-md btn-block" />
+                    <input type="submit" value="Update Issued Book Details" className="btn bg-green-400 hover:bg-green-500 focus:bg-green-500 text-white border-none outline-none rounded-md btn-block" />
                 </div>
             </form>
         </div>
     );
 };
 
-export default ReturnForm;
+export default ReturnBookUpdateForm;

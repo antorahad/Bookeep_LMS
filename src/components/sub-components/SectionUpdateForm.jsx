@@ -18,7 +18,7 @@ const SectionUpdateForm = () => {
             name, category, totalBook, totalShelf
         }
 
-        fetch(`http://localhost:5000/sections/${_id}`, {
+        fetch(`https://lms-server-beta.vercel.app/sections/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

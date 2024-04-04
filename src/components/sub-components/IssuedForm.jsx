@@ -23,7 +23,7 @@ const IssuedForm = () => {
             memberName,bookName,category,author,section,shelf,issueDate,expireDate,email
         };
         console.log(newIssue);
-        fetch('http://localhost:5000/issues', {
+        fetch('https://lms-server-beta.vercel.app/issues', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

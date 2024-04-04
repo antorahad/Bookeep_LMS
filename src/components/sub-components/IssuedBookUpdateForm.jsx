@@ -21,7 +21,7 @@ const IssuedBookUpdateForm = () => {
             memberName,bookName,category,author,section,shelf,issueDate,expireDate
         };
         console.log(updateIssue);
-        fetch(`http://localhost:5000/issues/${_id}`, {
+        fetch(`https://lms-server-beta.vercel.app/issues/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
@@ -43,7 +43,7 @@ const IssuedBookUpdateForm = () => {
             })
     }
     return (
-        <div className="py-10 px-5">
+        <div className="min-h-screen py-10 px-5">
             <div className="flex items-center justify-center">
                 <h1 className="text-white text-5xl font-bold mb-10">Update A Issued Book</h1>
             </div>

@@ -18,7 +18,7 @@ const UpdateForm = ({ item }) => {
             name, gender, image, address, contact
         }
 
-        fetch(`http://localhost:5000/users/${_id}`, {
+        fetch(`https://lms-server-beta.vercel.app/users/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const BookCollection = () => {
     const {user} = useContext(AuthContext);
     const [bookCollection, setBookCollection] = useState([]);
-    const url = `http://localhost:5000/books?email=${user?.email}`;
+    const url = `https://lms-server-beta.vercel.app/books?email=${user?.email}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -34,7 +34,7 @@ const BookCollection = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/books/${_id}`, {
+                fetch(`https://lms-server-beta.vercel.app/books/${_id}`, {
                     method: "DELETE",
                 })
                     .then((res) => res.json())

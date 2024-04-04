@@ -10,7 +10,7 @@ import { AuthContext } from "../../authprovider/AuthProvider";
 const HomeCard = () => {
     const {user} = useContext(AuthContext);
     const [books, setBooks] = useState([]);
-    const url = `http://localhost:5000/books?email=${user?.email}`;
+    const url = `https://lms-server-beta.vercel.app/books?email=${user?.email}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -18,7 +18,7 @@ const HomeCard = () => {
     }, [url])
 
     const [members, setMembers] = useState([]);
-    const url2 = `http://localhost:5000/members?email=${user?.email}`;
+    const url2 = `https://lms-server-beta.vercel.app/members?email=${user?.email}`;
     useEffect(() => {
         fetch(url2)
             .then(res => res.json())
@@ -26,7 +26,7 @@ const HomeCard = () => {
     }, [url2])
 
     const [sections, setSections] = useState([]);
-    const url3 = `http://localhost:5000/sections?email=${user?.email}`;
+    const url3 = `https://lms-server-beta.vercel.app/sections?email=${user?.email}`;
     useEffect(() => {
         fetch(url3)
             .then(res => res.json())
@@ -34,7 +34,7 @@ const HomeCard = () => {
     }, [url3])
     
     const [issuedBooks, setIssuedBooks] = useState([]);
-    const url4 = `http://localhost:5000/issues?email=${user?.email}`;
+    const url4 = `https://lms-server-beta.vercel.app/issues?email=${user?.email}`;
     useEffect(() => {
         fetch(url4)
             .then(res => res.json())
@@ -42,7 +42,7 @@ const HomeCard = () => {
     }, [url4])
 
     const [returnedBooks, setReturnedBooks] = useState([]);
-    const url5 = `http://localhost:5000/returns?email=${user?.email}`;
+    const url5 = `https://lms-server-beta.vercel.app/returns?email=${user?.email}`;
     useEffect(() => {
         fetch(url5)
             .then(res => res.json())

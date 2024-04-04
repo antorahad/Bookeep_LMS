@@ -26,7 +26,7 @@ const Rform = () => {
                 icon: "success"
             });
             navigate(location?.state ? location.state : '/');
-            fetch('http://localhost:5000/users', {
+            fetch('https://lms-server-beta.vercel.app/users', {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'
