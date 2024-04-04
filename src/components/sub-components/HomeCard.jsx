@@ -98,7 +98,7 @@ const HomeCard = () => {
                             <Link to={'/addsection'}>
                                 <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Add Section</button>
                             </Link>
-                            <Link to={'/'}>
+                            <Link to={'/viewsection'}>
                                 <button className="btn bg-green-400 hover:bg-green-500 focus:bg-green-500 text-white border-none outline-none rounded-md">View Section</button>
                             </Link>
                         </div>
@@ -115,8 +115,8 @@ const HomeCard = () => {
                             <Link to={'/issuebook'}>
                                 <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Issue Book</button>
                             </Link>
-                            <Link to={'/'}>
-                                <button className="btn bg-green-400 hover:bg-green-500 focus:bg-green-500 text-white border-none outline-none rounded-md">Book List</button>
+                            <Link to={'/viewissuedbook'}>
+                                <button className="btn bg-green-400 hover:bg-green-500 focus:bg-green-500 text-white border-none outline-none rounded-md">View Issued Book</button>
                             </Link>
                         </div>
                     </div>
@@ -132,8 +132,8 @@ const HomeCard = () => {
                             <Link to={'/returnbook'}>
                                 <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Return Book</button>
                             </Link>
-                            <Link to={'/'}>
-                                <button className="btn bg-green-400 hover:bg-green-500 focus:bg-green-500 text-white border-none outline-none rounded-md">Book List</button>
+                            <Link to={'/viewreturnedbook'}>
+                                <button className="btn bg-green-400 hover:bg-green-500 focus:bg-green-500 text-white border-none outline-none rounded-md">View Returned Book</button>
                             </Link>
                         </div>
                     </div>

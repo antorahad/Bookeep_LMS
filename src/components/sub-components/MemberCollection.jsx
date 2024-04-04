@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../authprovider/AuthProvider";
-import { FaUsers } from "react-icons/fa6";
+import { MdPersonSearch } from "react-icons/md";
 import MemberCards from "./MemberCards";
 import Swal from "sweetalert2";
 
@@ -58,12 +58,12 @@ const MemberCollection = () => {
     return (
         <div className="px-5 py-10 min-h-screen">
             <div className="flex items-center justify-center">
-                <h1 className="text-white text-5xl font-bold mb-10">All Member Collection</h1>
+                <h1 className="text-white text-5xl font-bold mb-10">All Member List</h1>
             </div>
             <div className="max-w-7xl mx-auto">
                 <div className="relative">
                     <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
-                        <FaUsers className="h-5 w-5 text-slate-400" />
+                        <MdPersonSearch className="h-5 w-5 text-slate-400" />
                     </span>
                     <input
                         onChange={handleSearch}

@@ -1,8 +1,11 @@
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../authprovider/AuthProvider";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const IssuedForm = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
     const {user} = useContext(AuthContext);
     const handleIssuedBook = e => {
         e.preventDefault();
@@ -37,6 +40,7 @@ const IssuedForm = () => {
                         icon: "success"
                     });
                     form.reset()
+                    navigate(location?.state ? location.state : '/viewissuedbook');
                 }
             })
     }

@@ -17,7 +17,9 @@ import UpdateBook from "../components/UpdateBook";
 import ViewMember from "../components/ViewMember";
 import MemberDetail from "../components/MemberDetail";
 import UpdateMember from "../components/UpdateMember";
-
+import ViewSection from "../components/ViewSection";
+import UpdateSection from "../components/UpdateSection";
+import ViewIssuedBook from "../components/ViewIssuedBook";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -77,8 +79,21 @@ const router = createBrowserRouter([
                 element: <PrivateProvider><AddSection/></PrivateProvider>
             },
             {
+                path: '/viewsection',
+                element: <PrivateProvider><ViewSection/></PrivateProvider>
+            },{
+                path: '/updatesection/:id',
+                element: <PrivateProvider><UpdateSection/></PrivateProvider>,
+                loader: ({params}) => fetch(`http://localhost:5000/sections/${params.id}`)
+            },
+
+            {
                 path: '/issuebook',
                 element: <PrivateProvider><IssuedBook/></PrivateProvider>
+            },
+            {
+                path: '/viewissuedbook',
+                element: <PrivateProvider><ViewIssuedBook/></PrivateProvider>
             },
             {
                 path: '/returnbook',

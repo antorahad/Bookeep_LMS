@@ -56,7 +56,7 @@ const BookCollection = () => {
     return (
         <div className="px-5 py-10 min-h-screen">
             <div className="flex items-center justify-center">
-                <h1 className="text-white text-5xl font-bold mb-10">All Book Collection</h1>
+                <h1 className="text-white text-5xl font-bold mb-10">All Book List</h1>
             </div>
             <div className="max-w-7xl mx-auto">
                 <div className="relative">
