@@ -12,17 +12,17 @@ const SectionCollection = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setSectionCollection(data))
-    }, [url])
+    }, [url]);
     const [search, setSearch] = useState('');
 
     const handleSearch = e => {
         setSearch(e.target.value);
-        console.log(e.target.value);
-    }
+    };
 
-    const filterSectionCollection = sectionCollection.filter(item => item.name.toLowerCase().includes(search.toLocaleLowerCase()) ||
-        item.category.toLowerCase().includes(search.toLowerCase()));
-
+    const filterSectionCollection = sectionCollection.filter(item => 
+        item.name.toLowerCase().includes(search.toLowerCase()) ||
+        item.category.toLowerCase().includes(search.toLowerCase())
+    );
 
     const handleDeleteSection = _id => {
         Swal.fire({
@@ -53,10 +53,11 @@ const SectionCollection = () => {
             }
         });
     };
+
     return (
         <div className="px-5 py-10 min-h-screen">
             <div className="flex items-center justify-center">
-                <h1 className="text-white text-5xl font-bold mb-10">Library Section List</h1>
+                <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-10">Section List</h1>
             </div>
             <div className="max-w-7xl mx-auto">
                 <div className="relative">
@@ -66,7 +67,7 @@ const SectionCollection = () => {
                     <input
                         onChange={handleSearch}
                         type="text"
-                        placeholder="Search section here..."
+                        placeholder="Search Section Here..."
                         className="pl-10 pr-4 py-2 border rounded-md w-full md:w-1/2 lg:w-1/3 bg-white bg-opacity-10 text-slate-400 border-slate-400 focus:border-slate-400"
                     />
                 </div>
@@ -82,11 +83,19 @@ const SectionCollection = () => {
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody className="bg-white bg-opacity-10 text-center text-lg text-white">
-                                {
-                                    filterSectionCollection.map(item => <SectionData key={item._id} item={item} handleDeleteSection={handleDeleteSection} />)
-                                }
-                            </tbody>
+                            {filterSectionCollection.length > 0 ? (
+                                <tbody className="bg-white bg-opacity-10 text-center text-lg text-white">
+                                    {filterSectionCollection.map(item => (
+                                        <SectionData key={item._id} item={item} handleDeleteSection={handleDeleteSection} />
+                                    ))}
+                                </tbody>
+                            ) : (
+                                <tbody className="bg-white bg-opacity-10 text-center text-lg text-white">
+                                    <tr>
+                                        <td colSpan="5">No data available</td>
+                                    </tr>
+                                </tbody>
+                            )}
                         </table>
                     </div>
                 </div>

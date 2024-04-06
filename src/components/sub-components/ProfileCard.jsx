@@ -14,7 +14,7 @@ const ProfileCard = () => {
     return (
         <div className="min-h-screen px-5 py-10">
             <div className="flex items-center justify-center">
-                <h1 className="text-white text-5xl font-bold mb-10">My Profile</h1>
+                <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-10">My Profile</h1>
             </div>
             <div className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-white bg-opacity-10 p-5 rounded-md">
                 {

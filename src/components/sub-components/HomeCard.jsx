@@ -113,7 +113,7 @@ const HomeCard = () => {
                         <p className="text-slate-400 font-medium">Total Book Issued : {issuedBooks.length}</p>
                         <div className="flex items-center gap-3">
                             <Link to={'/issuebook'}>
-                                <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Issue Book</button>
+                                <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Issued Book</button>
                             </Link>
                             <Link to={'/viewissuedbook'}>
                                 <button className="btn bg-green-400 hover:bg-green-500 focus:bg-green-500 text-white border-none outline-none rounded-md">View Issued Book</button>
@@ -130,7 +130,7 @@ const HomeCard = () => {
                         <p className="text-slate-400 font-medium">Total Book Returned : {returnedBooks.length}</p>
                         <div className="flex items-center gap-3">
                             <Link to={'/returnbook'}>
-                                <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Return Book</button>
+                                <button className="btn bg-blue-400 hover:bg-blue-500 focus:bg-blue-500 text-white border-none outline-none rounded-md">Returned Book</button>
                             </Link>
                             <Link to={'/viewreturnedbook'}>
                                 <button className="btn bg-green-400 hover:bg-green-500 focus:bg-green-500 text-white border-none outline-none rounded-md">View Returned Book</button>

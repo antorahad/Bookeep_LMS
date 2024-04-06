@@ -3,7 +3,7 @@ import { AuthContext } from "../../authprovider/AuthProvider";
 import { MdPersonSearch } from "react-icons/md";
 import MemberCards from "./MemberCards";
 import Swal from "sweetalert2";
-
+import noData from "../../assets/noData.png";
 const MemberCollection = () => {
     const { user } = useContext(AuthContext);
     const [memberCollection, setMemberCollection] = useState([]);
@@ -58,7 +58,7 @@ const MemberCollection = () => {
     return (
         <div className="px-5 py-10 min-h-screen">
             <div className="flex items-center justify-center">
-                <h1 className="text-white text-5xl font-bold mb-10">All Member List</h1>
+                <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-10">Member List</h1>
             </div>
             <div className="max-w-7xl mx-auto">
                 <div className="relative">
@@ -68,15 +68,22 @@ const MemberCollection = () => {
                     <input
                         onChange={handleSearch}
                         type="text"
-                        placeholder="Search member here..."
+                        placeholder="Search Member Here..."
                         className="pl-10 pr-4 py-2 border rounded-md w-full md:w-1/2 lg:w-1/3 bg-white bg-opacity-10 text-slate-400 border-slate-400 focus:border-slate-400"
                     />
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
+                {
+                    filterMemberCollection.length > 0 ? 
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
                     {
                         filterMemberCollection.map(item => <MemberCards key={item._id} item={item} handleDeleteMember={handleDeleteMember} />)
                     }
                 </div>
+                :
+                <div className="flex items-center justify-center mt-10">
+                        <img src={noData} alt="No data image" className="w-[300px]"/>
+                    </div>
+                }
             </div>
         </div>
     );

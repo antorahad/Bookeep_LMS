@@ -48,7 +48,7 @@ const MemberUpdateForm = () => {
     return (
         <div className="py-10 px-5">
             <div className="flex items-center justify-center">
-                <h1 className="text-white text-5xl font-bold mb-10">Update A Member</h1>
+                <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-10">Update Member</h1>
             </div>
             <form onSubmit={handleUpdateMember} className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-white bg-opacity-10 p-5 rounded-md">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -126,7 +126,7 @@ const MemberUpdateForm = () => {
                     </div>
                 </div>
                 <div className="flex items-center justify-center mt-5">
-                    <input type="submit" value="Update Member Details" className="btn bg-green-400 hover:bg-green-500 focus:bg-green-500 text-white border-none outline-none rounded-md btn-block" />
+                    <input type="submit" value="Update Member" className="btn bg-green-400 hover:bg-green-500 focus:bg-green-500 text-white border-none outline-none rounded-md btn-block" />
                 </div>
             </form>
         </div>

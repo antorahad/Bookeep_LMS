@@ -56,7 +56,7 @@ const IssuedBookCollection = () => {
     return (
         <div className="px-5 py-10 min-h-screen">
             <div className="flex items-center justify-center">
-                <h1 className="text-white text-5xl font-bold mb-10">Issued Book List</h1>
+                <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-10">Issued Book List</h1>
             </div>
             <div className="max-w-7xl mx-auto">
                 <div className="relative">
@@ -66,7 +66,7 @@ const IssuedBookCollection = () => {
                     <input
                         onChange={handleSearch}
                         type="text"
-                        placeholder="Search section here..."
+                        placeholder="Search Issued Book Here..."
                         className="pl-10 pr-4 py-2 border rounded-md w-full md:w-1/2 lg:w-1/3 bg-white bg-opacity-10 text-slate-400 border-slate-400 focus:border-slate-400"
                     />
                 </div>
@@ -86,11 +86,20 @@ const IssuedBookCollection = () => {
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody className="bg-white bg-opacity-10 text-center text-lg text-white">
-                                {
-                                    filterIssuedBookCollection.map(item => <IssuedBookData key={item._id} item={item} handleDeleteIssuedBook={handleDeleteIssuedBook} />)
-                                }
-                            </tbody>
+                            {
+                                filterIssuedBookCollection.length > 0 ?
+                                    <tbody className="bg-white bg-opacity-10 text-center text-lg text-white">
+                                        {
+                                            filterIssuedBookCollection.map(item => <IssuedBookData key={item._id} item={item} handleDeleteIssuedBook={handleDeleteIssuedBook} />)
+                                        }
+                                    </tbody>
+                                    :
+                                    <tbody className="bg-white bg-opacity-10 text-center text-lg text-white">
+                                        <tr>
+                                            <td colSpan="9">No data available</td>
+                                        </tr>
+                                    </tbody>
+                            }
                         </table>
                     </div>
                 </div>
