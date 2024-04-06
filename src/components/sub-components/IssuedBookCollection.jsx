@@ -67,7 +67,7 @@ const IssuedBookCollection = () => {
                         onChange={handleSearch}
                         type="text"
                         placeholder="Search section here..."
-                        className="pl-10 pr-4 py-2 border rounded-md w-1/3 bg-white bg-opacity-10 text-slate-400 border-slate-400 focus:border-slate-400"
+                        className="pl-10 pr-4 py-2 border rounded-md w-full md:w-1/2 lg:w-1/3 bg-white bg-opacity-10 text-slate-400 border-slate-400 focus:border-slate-400"
                     />
                 </div>
                 <div className="mt-5">
