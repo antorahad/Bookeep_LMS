@@ -77,7 +77,7 @@ const MemberForm = () => {
                         <label className="label">
                             <span className="font-medium text-green-400">Joining Date</span>
                         </label>
-                        <input type="date" name="join" className="input rounded-md" />
+                        <input type="date" name="join" placeholder="Enter Joining Date" className="input rounded-md w-full" />
                     </div>
                     <div className="form-control">
                         <label className="label">

@@ -89,13 +89,13 @@ const IssuedBookUpdateForm = () => {
                         <label className="label">
                             <span className="font-medium text-green-400">Issue Date</span>
                         </label>
-                        <input type="date" name="issueDate" defaultValue={issueDate} className="input rounded-md" />
+                        <input type="date" name="issueDate" defaultValue={issueDate} className="input rounded-md w-full" />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="font-medium text-green-400">Expire Date</span>
                         </label>
-                        <input type="date" name="expireDate" defaultValue={expireDate} className="input rounded-md" />
+                        <input type="date" name="expireDate" defaultValue={expireDate} className="input rounded-md w-full" />
                     </div>
                 </div>
                 <div className="flex items-center justify-center mt-5">

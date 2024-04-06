@@ -74,7 +74,7 @@ const MemberUpdateForm = () => {
                         <label className="label">
                             <span className="font-medium text-green-400">Joining Date</span>
                         </label>
-                        <input type="date" name="join" defaultValue={join} className="input rounded-md" />
+                        <input type="date" name="join" defaultValue={join} className="input rounded-md w-full" />
                     </div>
                     <div className="form-control">
                         <label className="label">

@@ -3,6 +3,7 @@ import Footer from "./sub-components/Footer";
 import Navbar from "./sub-components/Navbar";
 import UpdateForm from "./sub-components/UpdateForm";
 import { AuthContext } from "../authprovider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const UpdateProfile = () => {
     const {user} = useContext(AuthContext);
@@ -15,6 +16,9 @@ const UpdateProfile = () => {
     }, [url])
     return (
         <div>
+            <Helmet>
+                <title>Bookeep - Update Profile</title>
+             </Helmet>
             <Navbar/>
             <div className="min-h-screen py-10 px-5">
             {
