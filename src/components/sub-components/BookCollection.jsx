@@ -79,7 +79,7 @@ const BookCollection = () => {
                     }
                     </div>
                     :
-                    <div className="flex items-center justify-center mt-10">
+                    <div className="min-h-screen flex items-center justify-center mt-5">
                         <img src={noData} alt="No data image" className="w-[300px]"/>
                     </div>
                 }
